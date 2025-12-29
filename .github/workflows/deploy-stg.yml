@@ -1,0 +1,19 @@
+name: Deploy staging
+
+on:
+  push:
+    branches:
+      - staging
+
+jobs:
+  deploy-staging:
+    permissions:
+      id-token: write
+      contents: read
+    uses: ./.github/workflows/deploy.yml
+    with:
+      ecr-repository: stg-market-worker
+      task-definition: ./.github/task_definitions/stg.json
+      ecs-cluster: stg-roman-api-cluster
+      container-name: market-worker
+      aws-role-arn: arn:aws:iam::845129364773:role/GithubDeployRole
