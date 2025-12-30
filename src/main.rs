@@ -21,3 +21,12 @@ fn main() {
         Commands::Bar => println!("bar\n"),
     }
 }
+
+#[cfg(test)]
+mod tests {
+
+    #[test]
+    fn test_foo() {
+        assert!(true);
+    }
+}

@@ -1,0 +1,33 @@
+{
+  "containerDefinitions": [
+    {
+      "name": "market-worker",
+      "image": "${{ env.IMAGE_URL }}",
+      "cpu": 0,
+      "essential": true,
+      "command": ["foo"],
+      "environment": [],
+      "mountPoints": [],
+      "volumesFrom": [],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/stg-market-worker",
+          "awslogs-create-group": "true",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    }
+  ],
+  "family": "stg-market-worker",
+  "executionRoleArn": "arn:aws:iam::845129364773:role/ecsTaskExecutionRole",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "256",
+  "memory": "512",
+  "runtimePlatform": {
+    "cpuArchitecture": "X86_64",
+    "operatingSystemFamily": "LINUX"
+  }
+}
