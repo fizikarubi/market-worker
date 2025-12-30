@@ -1,24 +1,12 @@
-use clap::{Parser, Subcommand};
+use clap::Parser;
+use market_worker::{run, Command};
 
-#[derive(Parser)]
-#[command(name = "market-worker")]
-struct Cli {
-    #[command(subcommand)]
-    command: Commands,
-}
-
-#[derive(Subcommand)]
-enum Commands {
-    Foo,
-    Bar,
-}
-
-fn main() {
-    let cli = Cli::parse();
-
-    match cli.command {
-        Commands::Foo => println!("foo\n"),
-        Commands::Bar => println!("bar\n"),
+#[tokio::main]
+async fn main() {
+    let command = Command::parse();
+    if let Err(e) = run(command).await {
+        eprintln!("Error: {e:?}");
+        std::process::exit(1);
     }
 }
 

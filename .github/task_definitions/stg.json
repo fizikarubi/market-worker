@@ -5,8 +5,13 @@
       "image": "${{ env.IMAGE_URL }}",
       "cpu": 0,
       "essential": true,
-      "command": ["foo"],
-      "environment": [],
+      "command": ["resolve"],
+      "environment": [
+        {
+          "name": "MIRAIMA_ADMIN_ENDPOINT",
+          "value": "https://api.admin.roman-dev.net:8443"
+        }
+      ],
       "mountPoints": [],
       "volumesFrom": [],
       "logConfiguration": {
