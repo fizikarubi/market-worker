@@ -21,14 +21,14 @@ pub enum Command {
 pub async fn run(command: Command) -> Result<()> {
     let ctx: Ctx = Ctx::from_env().context("failed to load ctx")?;
     let client = reqwest::Client::builder()
-        .timeout(Duration::from_secs(5))
+        .timeout(Duration::from_secs(10))
         .build()
         .context("failed to build http client")?;
 
     match command {
-        Command::Create { market } => {
-            println!("{:?}", market);
+        Command::Create { market: _ } => {
             let url = format!("{}/admin/internal/", ctx.admin_endpoint);
+            println!("url: {}", url);
             let resp = client.get(&url).send().await.context("request failed")?;
             println!("resp: {}", resp.text().await?);
         }

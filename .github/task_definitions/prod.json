@@ -9,7 +9,7 @@
       "environment": [
         {
           "name": "MIRAIMA_ADMIN_ENDPOINT",
-          "value": "https://api.admin.thumba.games:8443"
+          "value": "http://admin-api.prod.internal:3000"
         }
       ],
       "mountPoints": [],

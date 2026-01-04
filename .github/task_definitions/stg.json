@@ -9,7 +9,7 @@
       "environment": [
         {
           "name": "MIRAIMA_ADMIN_ENDPOINT",
-          "value": "https://api.admin.roman-dev.net:8443"
+          "value": "http://admin-api.stg.internal:3000"
         }
       ],
       "mountPoints": [],

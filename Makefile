@@ -24,8 +24,9 @@ docker-run-create:
 
 ECS_STG_CLUSTER := stg-roman-api-cluster
 ECS_STG_TASK_DEF := stg-market-worker
-ECS_STG_SUBNET := subnet-c6a0e4a0
-ECS_STG_SG := sg-f0e8acf6
+# ECS_STG_SUBNET := subnet-0602ccdda8990aa6b # default subnet
+ECS_STG_SUBNET := subnet-0f0f5a281049d7610
+ECS_STG_SG := sg-0b8eb59b694b14293  # default sg 
 CMD := ["create","btcusd"]
 
 ecs-run-stg:
@@ -36,4 +37,3 @@ ecs-run-stg:
 		--network-configuration "awsvpcConfiguration={subnets=[$(ECS_STG_SUBNET)],securityGroups=[$(ECS_STG_SG)],assignPublicIp=ENABLED}" \
 		--overrides '{"containerOverrides":[{"name":"$(ECS_CONTAINER_NAME)","command":$(CMD)}]}' \
 		--region $(AWS_REGION)
-
